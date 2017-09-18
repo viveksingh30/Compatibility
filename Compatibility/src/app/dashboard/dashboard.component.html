@@ -1,0 +1,45 @@
+<div>
+<div id="Div1">
+  <!-- Left Panel start -->
+  <aside class="leftPanel">
+      <div id="logo">
+          <a href="javascript:void(0);" id="logoLink">
+              <img src="assets/Images/logo.png" width="185" height="75" alt="" />
+          </a>
+          <img src="assets/Images/compatibility-tool.png" width="185" height="77" alt="" />
+      </div>
+      <div class="left-nav" id="left-nav">
+          <ul id="left-navUl">
+              <li id="CompareCompatibility" [routerLinkActive]="['active']"><a routerLink="/dashboard/comparematrix" id="icn-compare" class="icn-compare">Compare<br>
+                  Compatibilities </a></li>
+              <li id="CompatibilityMatrix"  [routerLinkActive]="['active']"><a routerLink="/dashboard/getmatrix" id="icn-matrix" class="icn-matrix">Compatibility<br>
+                  Matrix </a></li>
+          </ul>
+      </div>
+  </aside>
+  <!-- End Left Panel  -->
+
+
+</div>
+
+  <div id="wraper">
+      <!-- Header start -->
+      <header>
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <nav id="navbarTop" class="navbar navbar-default">
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul id="navbarTopMenu" class="nav navbar-nav navbar-right">
+                      <li class="dropdown"><a href="javascript:void(0);" id="userInfo" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          <img src="assets/Images/profile-img.png" class="profile-img-top" alt="">Welcome, John Doe </a></li>
+                  </ul>
+              </div>
+          </nav>
+      </header>
+      <!-- End Header  -->
+
+  </div>
+  <section class="rightPanel">
+    <router-outlet></router-outlet>
+  </section>
+
+</div>

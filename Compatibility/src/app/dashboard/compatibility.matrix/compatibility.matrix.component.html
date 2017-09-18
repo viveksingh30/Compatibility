@@ -1,0 +1,48 @@
+<div id="page-title">
+    <h2>COMPATIBILITY MATRIX</h2>
+    <ul class="nav nav-pills" id="PagePills">
+      <li class="active"><a data-toggle="pill" href="#home" id="HomePagePills" (click)="varianSelectedClick()">Varian</a></li>
+      <li><a data-toggle="pill" href="#others" id="OtherPagePills" (click)="nonVarianSelectedClick()">Others</a></li>
+    </ul>
+  </div>
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <div class="container-fluid">
+            <div class="row" >
+                <div id="divSystem_{{system.Id}}" class="col-md-6" *ngFor="let system of lstSystems">
+                    <div class="widget row-height-3">
+                        <div class="wHeading" >
+                            <span class="icn-cont" >
+                                <img src="images/icn-tds.png" width="26" height="26" alt="" />
+                            </span>
+                             {{system.Name}}
+                        </div>
+                         <div class="col-md-12">
+                            <div id="carusel_{{system.Id}}" class="carousel slide" data-interval="false" >
+                                <ol *ngIf=" system.lstProducts.length > caruselSize" class="carousel-indicators" >
+                                    <li attr.data-target="#carusel_{{system.Id}}" attr.data-slide-to="{{i}}" [ngClass]="{active : i==0}" *ngFor="let batch of getBatchCount(system.lstProducts.length); let i = index"></li>
+                                </ol>
+                                <div id="carousel-inner" class="carousel-inner">
+                                    <div id="item_{{system.Id}}_{{myIndex}}" class="item" [ngClass]="{active : myIndex==0}" *ngFor="let i of getBatchCount(system.lstProducts.length); let myIndex = index">
+                                        <div class="row-fluid">
+                                            <div class="col-md-3" *ngFor="let productEl of getProductsInRange(system.lstProducts,myIndex)" (click)="productSelected($event, productEl)">
+                                                <a href="javascript:void(0);" id="prod_{{productEl.Id}}" name="Edge" class="box">
+                                                    <span>
+                                                        {{productEl.Name}}
+                                                    </span>
+                                                    <div class="bubble" [ngClass]="{'showbuble':productEl.SelectedCount>=1}">{{productEl.SelectedCount}}</div>
+                                                </a>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a *ngIf=" system.lstProducts.length > caruselSize" class="left carousel-control" id="carousel-left_{{system.Id}}" href="#carusel_{{system.Id}}" data-slide="prev">‹</a>
+                                <a *ngIf=" system.lstProducts.length > caruselSize" class="right carousel-control" href="#carusel_{{system.Id}}" id="carousel-right_{{system.Id}}" data-slide="next">›</a>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
